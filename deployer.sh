@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-printf "Hello"
+printf "Hello world"
