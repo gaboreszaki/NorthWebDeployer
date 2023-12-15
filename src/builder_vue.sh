@@ -4,7 +4,7 @@ function builder() {
   npm install
   npm run build
 
-  cd "dist"
-  cp -r * "$APP_active_version"
+
+  cp -r "$GIT_temp_folder/$APP_build_date/dist" "$ACTIVE_version"
 }
 

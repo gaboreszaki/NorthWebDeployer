@@ -14,8 +14,8 @@ function beforeBuild() {
   drawDescription
 
   ### Startup Process
-  breakProcess
   drawSection "Cleanup"
+  breakProcess
   cleanup
 }
 
@@ -23,25 +23,29 @@ function build() {
 
   ## Checklist
   drawSection "Running Checklists"
+  breakProcess
   checkFolders
 
   ### Get git files
   drawSection "Get Files From Github"
+  breakProcess
   getGitFiles
 
   drawSection "Building Project"
+  breakProcess
   builder
 }
 
 function activate() {
   drawSection "Activating Version"
   createActiveSymlink
+
 }
 
-function run() {
+function main() {
     beforeBuild
     build
     activate
 }
 
-run
+main

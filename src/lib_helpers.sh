@@ -48,8 +48,6 @@ function breakProcess() {
 
   if [[ $ans != "y" ]]; then
     exit
-  else
-    clear
   fi
 
 }
