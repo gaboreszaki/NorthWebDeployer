@@ -13,9 +13,11 @@ function beforeBuild() {
   drawHeader
   drawDescription
 
+  breakProcess
+
+
   ### Startup Process
   drawSection "Cleanup"
-  breakProcess
   cleanup
 }
 
@@ -23,16 +25,14 @@ function build() {
 
   ## Checklist
   drawSection "Running Checklists"
-  breakProcess
   checkFolders
 
   ### Get git files
   drawSection "Get Files From Github"
-  breakProcess
+
   getGitFiles
 
   drawSection "Building Project"
-  breakProcess
   builder
 }
 
