@@ -1,6 +1,5 @@
-
-The NWS deployer app is able to deploy your git repo to your LAMP environment.
-
+The NWS deployer app is able to deploy
+your git repo to your LAMP environment.
 
 Automatic Steps:
 - Running checkups

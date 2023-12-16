@@ -1,38 +1,36 @@
 #!/usr/bin/env bash
 function drawHeader() {
 
-  clear
-  #echo "## North Web Solutions - Deployer #0.1 ##"
+  printf '#%.0s' {1..60}
+  printf '\n'
+  printf "## %-54s ##\n" ""
+  printf "## %-54s ##\n" " _____         _   _   _ _ _     _    "
+  printf "## %-54s ##\n" "|   | |___ ___| |_| |_| | | |___| |_"
+  printf "## %-54s ##\n" "| | | | . |  _|  _|   | | | | -_| . |"
+  printf "## %-54s ##\n" "|_|___|___|_| |_| |_|_|_____|___|___|"
+  printf "## %-54s ##\n" ""
+  printf "## %54s ##\n" "$APP_name v$APP_version"
+  printf '#%.0s' {1..60}
+  printf '\n\n\n'
 
-  echo "############################################"
-  echo "##                                        ##"
-  echo "##   _____         _   _   _ _ _     _    ##"
-  echo "##  |   | |___ ___| |_| |_| | | |___| |_  ##"
-  echo "##  | | | | . |  _|  _|   | | | | -_| . | ##"
-  echo "##  |_|___|___|_| |_| |_|_|_____|___|___| ##"
-  echo "##                                        ##"
-  echo "############################################"
-#  echo "##"
-  echo "$APP_name v$APP_version"
-#  echo "- $APP_company / $APP_author "
-#  echo "- $APP_name #$APP_version "
-#  echo "## $APP_author"
 }
 
-
-
 function drawSection() {
-
-
   clear
-  echo "+----------------------------------------------------+"
-  printf "| %-50s |\n" "$APP_name v$APP_version"
-  printf "| %-50s |\n" ""
-  printf "| %-50s |\n" "Deploying: $DEPLOYMENT_NAME "
-  printf "| %-50s |\n" "Build type: $DEPLOYMENT_TYPE"
-  printf "| %-50s |\n" "Task: $1"
-  printf "| %-50s |\n" ""
-  echo "+----------------------------------------------------+"
+
+  printf '#%.0s' {1..60}
+  printf '\n'
+  printf "# %-56s #\n" " ____  _____ _____ __    _____ __ __ _____ _____ "
+  printf "# %-56s #\n" "|    \|   __|  _  |  |  |     |  |  |   __| __  |"
+  printf "# %-56s #\n" "|  |  |   __|   __|  |__|  |  |_   _|   __|    -|"
+  printf "# %-56s #\n" "|____/|_____|__|  |_____|_____| |_| |_____|__|__| v$APP_version"
+  printf "# %-56s #\n" ""
+  printf "# %-56s #\n" "- Deployed Domain: $DEPLOYMENT_NAME "
+  printf "# %-56s #\n" "- Deploy Type: $DEPLOYMENT_TYPE"
+  printf "# %-56s #\n" "- Current Task: $1"
+  printf "# %-56s #\n" ""
+  printf '#%.0s' {1..60}
+  printf '\n'
   printf "\n\n"
 
 }
