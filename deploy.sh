@@ -6,15 +6,13 @@ if [ ! $1 ]; then
   exit
 fi
 
-echo "DEPLOYMENT TYPE: $DEPLOYMENT_TYPE"
-
 function beforeBuild() {
+  clear
+
   ## Headers
   drawHeader
   drawDescription
-
-  breakProcess
-
+  breakProcess 'Warning, this will remove the contents of the TEMP folder'
 
   ### Startup Process
   drawSection "Cleanup"
@@ -43,9 +41,9 @@ function activate() {
 }
 
 function main() {
-    beforeBuild
-    build
-    activate
+  beforeBuild
+  build
+  activate
 }
 
 main

@@ -11,7 +11,7 @@ function drawHeader() {
   printf "## %-54s ##\n" ""
   printf "## %54s ##\n" "$APP_name v$APP_version"
   printf '#%.0s' {1..60}
-  printf '\n\n\n'
+  printf '\n\n'
 
 }
 
@@ -30,18 +30,26 @@ function drawSection() {
   printf "# %-56s #\n" "- Current Task: $1"
   printf "# %-56s #\n" ""
   printf '#%.0s' {1..60}
-  printf '\n'
   printf "\n\n"
 
 }
 
 function drawDescription() {
   cat $APP_folder/description.txt
-  printf "\n\n"
+  printf "\n"
 }
 
 function breakProcess() {
-  echo -n "Are you sure you want to continue? [y/n]: "
+
+  if [ "$1" ]; then
+    printf '_%.0s' {1..60}
+    printf '\n\n'
+    printf "$1 \n"
+    printf '_%.0s' {1..60}
+    printf '\n\n'
+  fi
+
+  printf "Are you sure you want to continue? [y/n]: \n"
   read -r ans
 
   if [[ $ans != "y" ]]; then
