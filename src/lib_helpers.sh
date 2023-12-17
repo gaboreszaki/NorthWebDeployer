@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 function drawHeader() {
 
+  # shellcheck disable=SC2154
   text_format="$mainTint##$tint_reset $tint_white%-54s$tint_reset $mainTint##$tint_reset\n"
   #  echo -e "$tint_red"
   printf "$mainTint#%.0s$tint_reset" {1..60}
   printf "\n"
+  # shellcheck disable=SC2059
   printf "$text_format" ""
   printf "$text_format" " _____         _   _   _ _ _     _    "
   printf "$text_format" "|   | |___ ___| |_| |_| | | |___| |_"
@@ -32,8 +34,8 @@ function drawSection() {
   printf "$mainTint#%.0s$tint_reset" {1..60}
   printf '\n'
   printf "$text_format" ""
-  printf "${mainTint}# %-20s${tint_reset} ${tint_green}%-35s${tint_reset} ${mainTint}#${tint_reset} \n" "- Deployed Domain:" ${DEPLOYMENT_NAME}
-  printf "${mainTint}# %-20s${tint_reset} ${tint_green}%-35s${tint_reset} ${mainTint}#${tint_reset} \n" "- Deployment Type:" ${DEPLOYMENT_TYPE}
+  printf "${mainTint}# %-20s${tint_reset} ${tint_green}%-35s${tint_reset} ${mainTint}#${tint_reset} \n" "- Deployed Domain:" "$DEPLOYMENT_NAME"
+  printf "${mainTint}# %-20s${tint_reset} ${tint_green}%-35s${tint_reset} ${mainTint}#${tint_reset} \n" "- Deployment Type:" "$DEPLOYMENT_TYPE"
   printf "${mainTint}# %-20s${tint_reset} ${tint_red}%-35s${tint_reset} ${mainTint}#${tint_reset} \n" "- Current Task:" "$1"
   printf "$text_format" ""
   printf "$mainTint#%.0s$tint_reset" {1..60}
@@ -42,7 +44,7 @@ function drawSection() {
 }
 
 function drawDescription() {
-  cat $APP_folder/description.txt
+  cat "$APP_folder"/description.txt
   printf "\n"
 }
 
@@ -97,7 +99,7 @@ function checkFolders() {
 
 function createActiveSymlink() {
 
-  cd $GIT_temp_folder
+  cd $GIT_temp_folder || exit
 
   echo "- Creating Symlink -"
   echo "$APP_active_version"
