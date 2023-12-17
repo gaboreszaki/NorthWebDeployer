@@ -15,27 +15,27 @@ function beforeBuild() {
   breakProcess 'Warning, this will remove the contents of the TEMP folder'
 
   ### Startup Process
-  drawSection "Cleanup"
+  drawSection 'Cleanup process'
   cleanup
 }
 
 function build() {
 
   ## Checklist
-  drawSection "Running Checklists"
+  drawSection 'Running Checklists'
   checkFolders
 
   ### Get git files
-  drawSection "Get Files From Github"
+  drawSection 'Get Files From Github'
 
   getGitFiles
 
-  drawSection "Building Project"
+  drawSection 'Building Project'
   builder
 }
 
 function activate() {
-  drawSection "Activating Version"
+  drawSection 'Activating Version'
   createActiveSymlink
 
 }
