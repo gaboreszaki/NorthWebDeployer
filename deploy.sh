@@ -12,7 +12,7 @@ function beforeBuild() {
   ## Headers
   drawHeader
   drawDescription
-  breakProcess 'Warning, this will remove the contents of the TEMP folder'
+#  breakProcess 'Warning, this will remove the contents of the TEMP folder'
 
   ### Startup Process
   drawSection 'Cleanup process'
@@ -27,7 +27,6 @@ function build() {
 
   ### Get git files
   drawSection 'Get Files From Github'
-
   getGitFiles
 
   drawSection 'Building Project'

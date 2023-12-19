@@ -4,9 +4,14 @@ clear
 
 echo "--- tester ---"
 
-drawHeader
+getGitFiles
+builder
 
-breakProcess
 
-wrap_text "Hello World" green
-colorShowcase
+
+#drawHeader
+
+#breakProcess
+#
+#wrap_text "Hello World" green
+#colorShowcase

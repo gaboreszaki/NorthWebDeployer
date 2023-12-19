@@ -70,7 +70,9 @@ After you created and logged in to the user, please follow this steps:
 
     ACTIVE_folder="$GIT_target_folder/active" # symlink folder for host like Apache or Nginx 
     ACTIVE_version="$GIT_target_folder/$APP_build_date" #naming convention for the folders
-    ```
+    ACTIVE_env="$GIT_target_folder/env/.env" #laravel .env file location, for symlink
+    
+   ```
 
 3. Change file mode
    Change the file mod on the `deploy.sh` to be executable
