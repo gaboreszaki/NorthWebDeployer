@@ -1,0 +1,20 @@
+{
+  "name": "deployer-app",
+  "version": "0.5",
+  "description": "NWS - Deployer app",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "keywords": [
+    "CI/CD",
+    "pipe",
+    "deploy",
+    "backend-deploy"
+  ],
+  "author": "gabor eszaki",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^2.0.0-rc.0"
+  }
+}
