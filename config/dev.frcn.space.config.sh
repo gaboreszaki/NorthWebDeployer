@@ -2,6 +2,8 @@
 
 DEPLOYMENT_NAME="dev.frcn.space"
 DEPLOYMENT_TYPE="laravel"
+IS_DEPLOYMENT_PRODUCTION=false
+
 
 #GIT Variables
 GIT_url="https://github.com/gaboreszaki/Frontier-Consolidated.git"
