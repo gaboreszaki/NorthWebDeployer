@@ -15,7 +15,12 @@ function fixPermissionsForLaravel() {
   wait
 
   chgrp -R -c www-data "$ACTIVE_version/storage"
-  chmod -R ug+rwx "$ACTIVE_version/storage" bootstrap/cache
+  wait
+
+  chmod -R ug+rwx "$ACTIVE_version/storage"
+  wait
+
+  chmod -R ug+rwx "$ACTIVE_version/bootstrap/cache"
   wait
 
 }
