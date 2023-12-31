@@ -4,9 +4,9 @@
 | | | | . |  _|  _|   | | | | -_| . |
 |_|___|___|_| |_| |_|_|_____|___|___|
 
-Deployer v0.3
+Deployer v0.4
 ```                                  
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/53ae4c1170184b909ea9f89475164ede)](https://app.codacy.com/gh/gaboreszaki/deployer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ### What is the deployer:
 
 The __Deployer__ is a continuous deployment(CD) pipeline tool for automate deployment in an ubuntu environment
@@ -81,7 +81,7 @@ After you created and logged in to the user, please follow this steps:
    ```
 
 ### Usage:
-After setup, just run the deploy command with the deployment name,
+After setup, just run the `deploy` command with the deployment name,
 Alternatively you can add config files to the config folder to extend the tool with new deployments.
 
 
