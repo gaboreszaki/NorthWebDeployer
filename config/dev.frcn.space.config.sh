@@ -2,7 +2,9 @@
 
 DEPLOYMENT_NAME="dev.frcn.space"
 DEPLOYMENT_TYPE="laravel"
-IS_DEPLOYMENT_PRODUCTION=false
+
+#todo: explain this in docs
+IS_DEPLOYMENT_PRODUCTION=true ### its only reacting to false, else its gonna deploy in prod
 
 
 #GIT Variables
