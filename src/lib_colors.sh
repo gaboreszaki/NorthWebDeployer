@@ -30,7 +30,7 @@ function wrap_text() {
   # Magic -> creating a reference variable:
   declare -n text_color="tint_$2"
 
-  echo -e "$text_color"$1"$tint_reset"
+  echo -e "${text_color}${1}${tint_reset}"
 
 }
 
