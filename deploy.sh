@@ -38,9 +38,7 @@ function build() {
 
 function afterBuild() {
       if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
-
         return
-
       else
          for i in "${RUNNER_AFTER[@]}"; do
            eval "$i"

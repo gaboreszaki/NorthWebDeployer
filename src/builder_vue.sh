@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 function builder() {
-  cd "$GIT_temp_folder/$APP_build_date"
+  cd "$GIT_temp_folder/$APP_build_date" || exit
   npm install
   npm run build
 
