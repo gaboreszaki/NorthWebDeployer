@@ -2,7 +2,9 @@
 
 DEPLOYMENT_NAME="dev.frcn.space"
 DEPLOYMENT_TYPE="laravel"
-IS_DEPLOYMENT_PRODUCTION=false
+
+#todo: explain this in docs
+IS_DEPLOYMENT_PRODUCTION=true ### its only reacting to false, else its gonna deploy in prod
 
 
 #GIT Variables
@@ -14,3 +16,5 @@ GIT_temp_folder="$APP_user_home_dir/deployment_temp"
 ACTIVE_folder="$GIT_target_folder/active"
 ACTIVE_version="$GIT_target_folder/$APP_build_date"
 ACTIVE_env="$GIT_target_folder/env/.env"
+
+RUNNER_AFTER=('php artisan image:process-temp')
