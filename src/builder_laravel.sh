@@ -29,4 +29,20 @@ function builder() {
     php artisan migrate
   fi
 
+if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
+
+   for i in "${RUNNER_AFTER[@]}"; do
+     eval "$i"
+
+   done
+
+else
+    echo "Oops, something went wrong..."
+fi
+
+
+
+
+
+
 }

@@ -4,7 +4,7 @@
 | | | | . |  _|  _|   | | | | -_| . |
 |_|___|___|_| |_| |_|_|_____|___|___|
 
-Deployer v0.4
+Deployer v0.5
 ```                                  
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/53ae4c1170184b909ea9f89475164ede)](https://app.codacy.com/gh/gaboreszaki/deployer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ### What is the deployer:
@@ -26,7 +26,7 @@ __In short, what it is doing?__
 - [x] Automatic Cleanup
 - [x] Git clone repo
 - [x] Git select branch
-- [ ] Laravel Build process
+- [x] Laravel Build process
 - [x] Vue Build process
 - [x] Symlink generation
 ___
@@ -59,19 +59,22 @@ After you created and logged in to the user, please follow this steps:
     ```bash
     #!/usr/bin/env bash
 
-    DEPLOYMENT_NAME="cv.northweb.dev" 
+    DEPLOYMENT_NAME="xy.example.com" 
     DEPLOYMENT_TYPE="vue" #[vue, laravel]
 
     GIT_url="YOUR_GITHUB_URL" # https link for github public project
     GIT_branch="TARGET_BRANCH" # main, dev... depends on your repository
-    GIT_target_folder="/var/www/cv-view" # destination for the built files
-    GIT_temp_folder="$APP_user_home_dir/deployment_temp" # temp location for create build
+    GIT_target_folder="/var/www/YOUR_PROJECT_FOLDER" # destination for the built files (RW required)
+    GIT_temp_folder="$APP_user_home_dir/deployment_temp" # temp location for create build (RW required)
 
 
     ACTIVE_folder="$GIT_target_folder/active" # symlink folder for host like Apache or Nginx 
     ACTIVE_version="$GIT_target_folder/$APP_build_date" #naming convention for the folders
     ACTIVE_env="$GIT_target_folder/env/.env" #laravel .env file location, for symlink
     
+   #OPTIONAL
+   RUNNER_AFTER=('php artisan xy', 'php XY_COMMAND') #Array with all items runnable after build 
+   
    ```
 
 3. Change file mode
@@ -87,5 +90,5 @@ Alternatively you can add config files to the config folder to extend the tool w
 
 __deploy.sh__ _[deployment_name]_ 
 ```bash
-./deploy.sh cv.northweb.dev
+./deploy.sh xy.example.com
 ```

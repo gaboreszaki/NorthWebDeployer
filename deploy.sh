@@ -7,6 +7,8 @@ if [ ! $1 ]; then
   exit
 fi
 
+
+
 function beforeBuild() {
   clear
 
@@ -34,6 +36,18 @@ function build() {
   builder
 }
 
+function afterBuild() {
+      if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
+
+        return
+
+      else
+         for i in "${RUNNER_AFTER[@]}"; do
+           eval "$i"
+         done
+      fi
+}
+
 function activate() {
   drawSection 'Activating Version'
   createActiveSymlink
@@ -43,6 +57,7 @@ function activate() {
 function main() {
   beforeBuild
   build
+  afterBuild
   activate
 }
 
