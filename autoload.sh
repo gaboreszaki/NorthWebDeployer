@@ -2,8 +2,9 @@
 source "config.sh"
 source "config/app.config.sh"
 source "config/$1.config.sh"
-source "src/lib_helpers.sh"
-source "src/lib_github.sh"
-source "src/lib_colors.sh"
-source "src/lib_laravel.sh"
-source "src/builder_$DEPLOYMENT_TYPE.sh"
+source "src/builders/builder_$DEPLOYMENT_TYPE.sh"
+
+## Autoload Libs
+for f in src/libs/*; do
+  source "$f"
+done

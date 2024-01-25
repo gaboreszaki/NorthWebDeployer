@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+declare listForExport
+declare format="# %-5s | %15s | %-40s \n"
+
+function extractDataForRollback() {
+  #$1 = filename
+  #$2 = unix_timestamp
+  echo "${2}" >>"data/${1}.dat"
+
+}
+function draw_line() {
+
+  divider=${1:-"-"}
+
+  full_length=${COLUMNS:-$(tput cols)}
+  half_length=$(($full_length / 2))
+
+  printf '%*s\n' "$half_length" '' | tr ' ' "$divider"
+}
+
+function generateList(){
+    while IFS= read -r line; do
+      i=$((i + 1))
+      listForExport+=("$line")
+    done <"data/${1}.dat"
+}
+
+
+function listDeployments() {
+#  #1 = domain
+  clear
+
+  draw_line "#"
+  printf "# List of deployments for ${tint_white}${1}${tint_reset}:\n"
+  draw_line
+  printf "$format" "ID" "Timestamp" "Date"
+  draw_line
+#
+#  i=0
+for item in "${!listForExport[@]}"
+do
+
+#      echo "${GIT_target_folder}/${listForExport[$item]}"
+    if [ -d "${GIT_target_folder}/${listForExport[$item]}" ]; then
+
+      localFormat="${tint_green}# %-5s | %15s | %-40s \n${tint_reset}"
+    else
+      localFormat="${tint_red}# %-5s | %15s | %-40s \n${tint_reset}"
+
+    fi
+  printf "${localFormat}" "${item}" "${listForExport[$item]}" "$(date -d @"${listForExport[$item]}")"
+done
+
+
+#for index in "${!arr[@]}";
+#do
+#    echo "$index -> ${arr[$index]}"
+#done
+#printf "${format}" "${#listForExport[@]}" "${listForExport[@]}" "-"
+
+
+}
+
+

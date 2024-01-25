@@ -35,9 +35,6 @@ if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
      eval "$i"
 
    done
-
-else
-    echo "Oops, something went wrong..."
 fi
 
 

@@ -1,5 +1,6 @@
 .git
 .idea
+data/*
 config/*
 !config/app.config.sh
 !config/example.com.config.sh

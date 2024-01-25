@@ -4,7 +4,7 @@
 | | | | . |  _|  _|   | | | | -_| . |
 |_|___|___|_| |_| |_|_|_____|___|___|
 
-Deployer v0.5
+Deployer v0.6
 ```                                  
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/53ae4c1170184b909ea9f89475164ede)](https://app.codacy.com/gh/gaboreszaki/deployer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ### What is the deployer:
@@ -26,9 +26,19 @@ __In short, what it is doing?__
 - [x] Automatic Cleanup
 - [x] Git clone repo
 - [x] Git select branch
+- [x] Symlink generation
+- [x] Custom After Build Commands
+- [ ] Self Update
+- [x] Rollback
+- [ ] Config generator
+
+
+Builders:
 - [x] Laravel Build process
 - [x] Vue Build process
-- [x] Symlink generation
+
+Feature Flags:
+  - [ ] Is_production
 ___
 ### Requirements:
 - Ubuntu 18.04 or later
