@@ -87,6 +87,7 @@ function checkFolders() {
     "$GIT_temp_folder"
     "$GIT_target_folder"
     "$APP_active_version"
+    "$APP_deployment_data_folder"
 
   )
 
