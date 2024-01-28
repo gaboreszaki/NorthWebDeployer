@@ -12,9 +12,14 @@ function builder() {
   npm run build
 
   #Creating Symlinks for .env and public storage
-  php artisan storage:link
+  clear
   createSymlinkForEnv
 
+  linkExternalStorage
+
+  php artisan storage:link
+
+  sleep 5
   fixPermissionsForLaravel
 
   php artisan cache:clear
@@ -29,17 +34,12 @@ function builder() {
     php artisan migrate
   fi
 
-if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
+  if [ ${#RUNNER_AFTER[@]} -eq 0 ]; then
 
-   for i in "${RUNNER_AFTER[@]}"; do
-     eval "$i"
+    for i in "${RUNNER_AFTER[@]}"; do
+      eval "$i"
 
-   done
-fi
-
-
-
-
-
+    done
+  fi
 
 }

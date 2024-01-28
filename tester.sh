@@ -3,7 +3,9 @@ source "autoload.sh"
 clear
 #
 #  drawSection 'Building Project'
-extractDataForRollback
+#extractDataForRollback
+#createActiveSymlink
+linkExternalStorage
 
 #echo "$IS_DEPLOYMENT_PRODUCTION"
 #echo "--- tester ---"
