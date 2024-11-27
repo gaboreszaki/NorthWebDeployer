@@ -113,9 +113,9 @@ function cleanup() {
   echo "Cleanup process starting in 3sec"
   sleep 3s
 
-  rm -rfv "$GIT_temp_folder"
+  rm -rf "$GIT_temp_folder"
   printf "\n\n"
-  printf "Cleanup processed"
+  printf "Cleanup processed\n"
   sleep 1s
   clear
 }
