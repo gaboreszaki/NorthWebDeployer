@@ -8,9 +8,9 @@ IS_DEPLOYMENT_PRODUCTION=true #variable to set deployment characteristics
 
 
 #GIT Variables
-GIT_url="Your_Project_git_url" # example: "https://github.com/gaboreszaki/deployer.git"
+GIT_url="Your_Project_git_url" # example: "git@github.com:gaboreszaki/NorthWebDeployer.git"
 GIT_branch="GIT_BRANCH" #example: "dev"
-GIT_target_folder="/var/www/DESTINATION_FOLDER"
+GIT_target_folder="/var/www/DESTINATION_FOLDER" #dont ad trailing slash
 GIT_temp_folder="$APP_user_home_dir/deployment_temp" #Read & Write folder for temporary files
 
 ACTIVE_folder="$GIT_target_folder/active"
