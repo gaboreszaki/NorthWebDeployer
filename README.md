@@ -4,7 +4,7 @@
 | | | | . |  _|  _|   | | | | -_| . |
 |_|___|___|_| |_| |_|_|_____|___|___|
 
-North Web Deployer v0.6
+North Web Deployer v0.7
 ```                                  
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/53ae4c1170184b909ea9f89475164ede)](https://app.codacy.com/gh/gaboreszaki/deployer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
