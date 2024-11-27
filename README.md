@@ -151,7 +151,7 @@ or just copy the content of your public file into the key form imput.
 GIT_DEPLOYMENT_KEY_PATH="~/.ssh/xy-project"
 ```
 
-To verify the changes you sould run de deployment as normal, but in therminal you sould be able to see the following: "Key found! Utilising identity for ssh." and "Cloning started from private repository"
+To verify the changes you should run de deployment as normal, but in therminal you sould be able to see the following: "Key found! Utilising identity for ssh." and "Cloning started from private repository"
 
 ## Breaking changes:
 v0.7 - git url in the config must be an ssh 
