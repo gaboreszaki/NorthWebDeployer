@@ -155,3 +155,124 @@ To verify the changes you should run de deployment as normal, but in therminal y
 
 ## Breaking changes:
 v0.7 - git url in the config must be an ssh 
+
+# Github Actions
+## Steps to create the CD pipeline:
+- Install/clone deployer to your server (read above)
+- Create config files (read above)
+- Create environment on GitHub (repository settings)
+- Add workflow files to your source-code
+
+
+## Environment - Secrets and variables
+
+(` Repository > Settings > Secrets & variables > actions`)
+
+Create a new environment:
+
+1. Name your environment (like prod, dev, etc)
+2. (optional) select deployment protection rules
+3. select branch and tags, i recommend to "selected branches and tags" and choose like main branch for prod environment
+4. add environment secrets & variables:
+
+**Secrets**:
+`SSH_HOST` = "yourdomin.com" this is the domain or ip where you are hosting your website
+`SSH_PORT` = "22" or your SSH port
+`SSH_USER` = "Username" the "deployer" user with access to write in the destination directory
+`SSH_KEY` = "RSA KEY (private) " - Make sure you generate a dedicated key for deployment, and register the public key with the user in your  `~/.ssh/authorized_keys`
+
+**Variables**:
+`TARGET_DOMAIN` = "your.domain.com" this is the identification for triggering the deployer.
+the workflow will run the `cd deployer && ./deploy.sh ${{ vars.TARGET_DOMAIN }}` command
+
+# Workflow file
+
+Change the name / run-name / branches and the environment to match with your settings / your likings
+
+> `environment:` environment's name in your repo settings (like prod, dev, etc)
+> make sure its an exact match!
+
+### Production example : ( `.github/workflows/production.yaml` )
+
+``` yaml
+name: Production
+run-name: ${{ github.actor }} deploying ${{ vars.TARGET_DOMAIN }} to production
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    environment: ***YOUR_ENVIROMENT_NAME***
+    name: "Triggering Remote Deployer"
+    runs-on: ubuntu-latest
+    # needs: test
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          cat ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+
+      - name: Check out the source
+        run: ssh staging "cd deployer && ./deploy.sh ${{ vars.TARGET_DOMAIN }}"
+
+
+
+```
+
+### Development example : ( `.github/workflows/development.yaml` )
+
+``` yaml
+name: Development
+run-name: ${{ github.actor }} deploying ${{ vars.TARGET_DOMAIN }} to development
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  deploy:
+    environment: (dev) gabor.northweb.dev
+    name: "Triggering Remote Deployer"
+    runs-on: ubuntu-latest
+    # needs: test
+    steps:
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          cat ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+
+      - name: Check out the source
+        run: ssh staging "cd deployer && ./deploy.sh ${{ vars.TARGET_DOMAIN }}"
+
+```
+
